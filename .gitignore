@@ -1,0 +1,55 @@
+# Node.js/TypeScript (AWS CDK)
+node_modules/
+dist/
+coverage/
+.nyc_output/
+*.log
+*.tsbuildinfo
+.DS_Store
+.env
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Docker
+*.env
+.dockerignore
+docker-compose.override.yml
+**/Dockerfile.*
+
+# Python (LLaMA-related scripts)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.venv/
+*.env
+
+# Kubernetes/Helm
+*.kubeconfig
+*.kube/
+*.crt
+*.key
+.helm/
+charts/
+releases/
+
+# AWS
+.aws-sam/
+*.env
+*.template.yaml
+
+# Logs and Temp Files
+*.log
+*.out
+*.tmp
+*.swp
+
+# Operating System Files
+Thumbs.db
+.DS_Store
+*.bak
