@@ -12,7 +12,7 @@ Older versions are not supported and may have known vulnerabilities. Please ensu
 If you discover a vulnerability in HeliosIQ, we encourage you to report it responsibly. Please follow these steps:
 1. **Do not open a public issue**: To prevent any malicious actors from exploiting the vulnerability before it is fixed, please do not open a public issue or pull request for the vulnerability.
 2. **Use GitHub’s private vulnerability reporting**:
-    - If you have identified a security vulnerability, please use the GitHub private vulnerability reporting feature to submit your report directly to us.
+    - If you have identified a security vulnerability, please use the [GitHub private vulnerability reporting feature](https://docs.github.com/en/code-security/security-advisories/working-with-repository-security-advisories/creating-a-repository-security-advisory) to submit your report directly to us.
     - When reporting, please provide the following:
         - A description of the vulnerability.
         - Steps to reproduce the issue (if applicable).
