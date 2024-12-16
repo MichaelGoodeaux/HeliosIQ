@@ -11,14 +11,16 @@ Older versions are not supported and may have known vulnerabilities. Please ensu
 ## Reporting a Vulnerability
 If you discover a vulnerability in HeliosIQ, we encourage you to report it responsibly. Please follow these steps:
 1. **Do not open a public issue**: To prevent any malicious actors from exploiting the vulnerability before it is fixed, please do not open a public issue or pull request for the vulnerability.
-2. **Email secops.heliosiq@gmail.com**: Send a detailed report to our security team at secops.heliosiq@gmail.com. Please include:
-    - A description of the vulnerability.
-    - Steps to reproduce the issue (if applicable).
-    - Any affected versions, configurations, or environments.
-    - Potential impact and severity.
-    - Any exploit code (if applicable).
-3. **We will acknowledge receipt**: Upon receiving your report, our security team will acknowledge it within 48 hours.
-4. **Public disclosure timeline**: After we have investigated and fixed the issue, we will publish a fix in a timely manner. We typically aim to release patches within 30 days for critical vulnerabilities. Once the fix is released, we will publicly disclose the vulnerability in a responsible manner.
+2. **Use GitHub’s private vulnerability reporting**:
+    - If you have identified a security vulnerability, please use the GitHub private vulnerability reporting feature to submit your report directly to us.
+    - When reporting, please provide the following:
+        - A description of the vulnerability.
+        - Steps to reproduce the issue (if applicable).
+        - Any affected versions, configurations, or environments.
+        - Potential impact and severity.
+        - Any exploit code (if applicable).
+4. **We will acknowledge receipt**: Upon receiving your report, our security team will acknowledge it within 48 hours.
+5. **Public disclosure timeline**: After the vulnerability has been resolved, we will release a public advisory and patch. Our aim is to patch critical vulnerabilities within 30 days.
 
 ## Security Practices
 We take security seriously and follow these best practices to ensure the safety and integrity of HeliosIQ:
