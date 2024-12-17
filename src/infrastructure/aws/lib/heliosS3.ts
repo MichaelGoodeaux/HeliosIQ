@@ -6,7 +6,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Readable } from 'stream'; // Import Node.js stream module
 
-export class AwsS3Stack extends cdk.Stack {
+export class HeliosS3Stack extends cdk.Stack {
   private s3Client: S3Client;
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {

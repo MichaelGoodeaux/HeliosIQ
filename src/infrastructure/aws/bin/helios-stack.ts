@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import { AwsS3Stack } from '../lib/s3'; // Import your S3 stack class
-import { AwsLambdaStack } from '../lib/lambda'; // Import your Lambda stack class
+import { HeliosS3Stack } from '../lib/heliosS3'; // Import your S3 stack class
+import { HeliosLambdaStack } from '../lib/heliosLambda'; // Import your Lambda stack class
 
 // Define the main stack
 export class HeliosIQStack extends cdk.Stack {
@@ -10,12 +10,12 @@ export class HeliosIQStack extends cdk.Stack {
     super(scope, id, props);
 
     // Instantiate and add S3 resources
-    const s3Stack = new AwsS3Stack(this, 'HeliosIQ-S3Stack', {
+    const s3Stack = new HeliosS3Stack(this, 'HeliosIQ-S3Stack', {
       stackName: 'HeliosIQ-S3',
     });
 
     // Instantiate and add Lambda resources
-    const lambdaStack = new AwsLambdaStack(this, 'HeliosIQ-LambdaStack', {
+    const lambdaStack = new HeliosLambdaStack(this, 'HeliosIQ-LambdaStack', {
       stackName: 'HeliosIQ-Lambda',
     });
 
