@@ -48,6 +48,7 @@ For more information or any inquiries, please feel free to open an issue or reac
 ## Architecture Diagram
 
 ```mermaid
+%%{init: {'theme': 'default', 'themeVariables': {'fontSize': '16px', 'nodeSpacing': '20px', 'edgeSpacing': '10px'}}}%%
 graph TB
     subgraph Client["Client Interaction"]
         SLK[Slack Integration]
@@ -105,10 +106,10 @@ graph TB
     
     ALERT --> SLK
 
-    classDef cloud fill:#f9f,stroke:#333,stroke-width:2px
-    classDef monitoring fill:#bbf,stroke:#333,stroke-width:2px
-    classDef app fill:#bfb,stroke:#333,stroke-width:2px
-    classDef client fill:#fbb,stroke:#333,stroke-width:2px
+    classDef cloud fill:#f9f,stroke:#333,stroke-width:2px,font-size:18px
+    classDef monitoring fill:#bbf,stroke:#333,stroke-width:2px,font-size:18px
+    classDef app fill:#bfb,stroke:#333,stroke-width:2px,font-size:18px
+    classDef client fill:#fbb,stroke:#333,stroke-width:2px,font-size:18px
     
     class AWS,AZ,GCP cloud
     class PROM,GRAF,ALERT monitoring
