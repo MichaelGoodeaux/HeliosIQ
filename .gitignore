@@ -9,9 +9,12 @@ coverage/
 .env
 
 # Terraform
+*.tfvars
+!template.tfvars
+.terraform
 *.tfstate
 *.tfstate.*
-.terraform/
+*.tfplan
 .terraform.lock.hcl
 
 # Docker
