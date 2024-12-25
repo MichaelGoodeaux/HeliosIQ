@@ -45,6 +45,77 @@ This project is licensed under the [Apache 2.0 License](./LICENSE).
 
 For more information or any inquiries, please feel free to open an issue or reach out directly.
 
+## Architecture Diagram
+
+```mermaid
+graph TB
+    subgraph Client["Client Interaction"]
+        SLK[Slack Integration]
+        CLI[CLI Tools]
+    end
+
+    subgraph MC["Multi-Cloud Deployment"]
+        TF[Terraform] --> AWS
+        TF --> AZ[Azure]
+        TF --> GCP
+        
+        subgraph AWS["AWS Infrastructure"]
+            EKS[EKS Cluster]
+            S3[S3 State Backend]
+            DYNB[DynamoDB Lock Table]
+        end
+        
+        subgraph AZ["Azure Infrastructure"]
+            AKS[AKS Cluster]
+            BLOB[Blob Storage Backend]
+        end
+        
+        subgraph GCP["GCP Infrastructure"]
+            GKE[GKE Cluster]
+            GCS[Cloud Storage Backend]
+        end
+    end
+
+    subgraph MON["Monitoring Stack"]
+        PROM[Prometheus]
+        GRAF[Grafana]
+        ALERT[Alertmanager]
+    end
+
+    subgraph APP["HeliosIQ Components"]
+        API[API Service]
+        WORKER[Worker Service]
+        LLM[LLM Integration]
+        DB[(Metrics Storage)]
+    end
+
+    SLK --> API
+    CLI --> API
+    
+    API --> LLM
+    API --> DB
+    WORKER --> DB
+    
+    PROM --> EKS
+    PROM --> AKS
+    PROM --> GKE
+    
+    PROM --> ALERT
+    PROM --> GRAF
+    
+    ALERT --> SLK
+
+    classDef cloud fill:#f9f,stroke:#333,stroke-width:2px
+    classDef monitoring fill:#bbf,stroke:#333,stroke-width:2px
+    classDef app fill:#bfb,stroke:#333,stroke-width:2px
+    classDef client fill:#fbb,stroke:#333,stroke-width:2px
+    
+    class AWS,AZ,GCP cloud
+    class PROM,GRAF,ALERT monitoring
+    class API,WORKER,LLM,DB app
+    class SLK,CLI client
+```
+
 ## Project Directory
 
 ```bash
