@@ -5,3 +5,4 @@ export * from './utils/validation';
 export * from './types/alerts';
 export * from './types/monitoring';
 export * from './types/security';
+export * from './config';

@@ -1,6 +1,6 @@
 {
     "name": "@heliosiq/shared",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Shared utilities and types for HeliosIQ",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
