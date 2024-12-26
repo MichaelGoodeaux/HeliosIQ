@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src",               // Root directory for your source files
+    "outDir": "./dist",               // Output directory for compiled files
+    "composite": true,                // Required for project references (if applicable)
+    "declaration": true,              // Generate .d.ts files
+    "declarationMap": true,           // Optional: generate declaration maps
+    "moduleResolution": "node",       // Ensure TypeScript resolves modules like Node.js
+    "target": "ES6",                  // Use ES6 target (or the target you're working with)
+    "module": "ESNext",               // Use ESNext modules (or your preferred module system)
+    "esModuleInterop": true,          // Ensures compatibility with CommonJS modules
+    "skipLibCheck": true              // Skip library checks (optional)
+  },
+  "include": [
+    "src/**/*"                         // Include all TypeScript files in the src directory
+  ]
+}
