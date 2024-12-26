@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@heliosiq/core": ["./packages/core/src"],
+      "@heliosiq/core/*": ["./packages/core/src/*"],
+      "@heliosiq/shared": ["./packages/shared/src"],
+      "@heliosiq/shared/*": ["./packages/shared/src/*"],
+      "@heliosiq/api": ["./packages/api/src"],
+      "@heliosiq/api/*": ["./packages/api/src/*"],
+      "@heliosiq/worker": ["./packages/worker/src"],
+      "@heliosiq/worker/*": ["./packages/worker/src/*"],
+      "@heliosiq/llm-connector": ["./packages/llm-connector/src"],
+      "@heliosiq/llm-connector/*": ["./packages/llm-connector/src/*"],
+      "@heliosiq/slack-bot": ["./packages/slack-bot/src"],
+      "@heliosiq/slack-bot/*": ["./packages/slack-bot/src/*"],
+      "@heliosiq/monitoring": ["./packages/monitoring/src"],
+      "@heliosiq/monitoring/*": ["./packages/monitoring/src/*"]
+    },
+    "declaration": true,
+    "composite": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "references": [
+    { "path": "./packages/shared" },
+    { "path": "./packages/core" },
+    { "path": "./packages/api" },
+    { "path": "./packages/worker" },
+    { "path": "./packages/llm-connector" },
+    { "path": "./packages/slack-bot" },
+    { "path": "./packages/monitoring" }
+  ],
+  "exclude": ["node_modules", "dist"]
+}
