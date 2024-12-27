@@ -1,0 +1,21 @@
+# /etc/grafana/provisioning/datasources/prometheus.yml
+
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: https://prometheus:9090
+    isDefault: true
+    jsonData:
+      timeInterval: "15s"
+      tlsAuth: true
+      tlsAuthWithCACert: true
+    secureJsonData:
+      tlsCACert: ${PROMETHEUS_CA_CERT}
+      tlsClientCert: ${PROMETHEUS_CLIENT_CERT}
+      tlsClientKey: ${PROMETHEUS_CLIENT_KEY}
+      basicAuthPassword: ${PROMETHEUS_BASIC_AUTH_PASSWORD}
+    basicAuth: true
+    basicAuthUser: ${PROMETHEUS_BASIC_AUTH_USER}

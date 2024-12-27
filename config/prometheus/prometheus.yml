@@ -1,0 +1,77 @@
+# config/prometheus/prometheus.yml
+
+global:
+  scrape_interval: 15s  # Adjusted default value for scrape_interval
+  evaluation_interval: 15s  # Adjusted default value for evaluation_interval
+  external_labels:
+    environment: ${ENVIRONMENT}
+    cluster: ${CLUSTER_NAME}
+
+# Rule files
+rule_files:
+  - "/etc/prometheus/rules/*.yml"
+
+# Alert manager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager:9093"]
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # Kubernetes API server monitoring
+  - job_name: "kubernetes-apiservers"
+    kubernetes_sd_configs:
+      - role: endpoints
+        api_server: ${K8S_API_SERVER}
+    scheme: https
+    tls_config:
+      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name]
+        action: keep
+        regex: kube-system;kubernetes
+
+  # Node monitoring
+  - job_name: "kubernetes-nodes"
+    kubernetes_sd_configs:
+      - role: node
+    tls_config:
+      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    relabel_configs:
+      - action: labelmap
+        regex: __meta_kubernetes_node_label_(.+)
+
+  # Service monitoring
+  - job_name: "kubernetes-services"
+    kubernetes_sd_configs:
+      - role: service
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+        action: keep
+        regex: true
+
+# Storage configuration
+# These should be configured via flags, not in the YAML.
+# Example Prometheus command flags for storage:
+# --storage.tsdb.path=/prometheus
+# --storage.tsdb.retention.time=${RETENTION_PERIOD}
+# --storage.tsdb.retention.size=${RETENTION_SIZE}
+# --storage.tsdb.wal-compression=true
+
+# Remote write configuration (if needed)
+remote_write:
+  - url: ${REMOTE_WRITE_URL}
+    basic_auth:
+      username: ${REMOTE_WRITE_USERNAME}
+      password: ${REMOTE_WRITE_PASSWORD}
+    tls_config:
+      cert_file: /etc/prometheus/certs/remote-write.crt
+      key_file: /etc/prometheus/certs/remote-write.key

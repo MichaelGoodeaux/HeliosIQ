@@ -1,0 +1,30 @@
+# config/prometheus/rules/alerts.yml
+groups:
+  - name: node_alerts
+    rules:
+      - alert: HighCPUUsage
+        expr: instance:node_cpu:rate5m > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High CPU usage detected
+          description: CPU usage is above 80% for 5 minutes
+
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High memory usage detected
+          description: Memory usage is above 85% for 5 minutes
+
+      - alert: DiskSpaceFilling
+        expr: predict_linear(node_filesystem_free_bytes{mountpoint="/"}[6h], 24 * 3600) < 0
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: Disk space filling up
+          description: Disk is predicted to fill up within 24 hours
